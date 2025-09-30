@@ -2,7 +2,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
-import 'reservasi_confirm_screen.dart'; // Import layar konfirmasi
+import 'reservasi_confirm_screen.dart'; 
 
 class ReservasiScreen extends StatefulWidget {
   const ReservasiScreen({super.key});
@@ -14,12 +14,10 @@ class ReservasiScreen extends StatefulWidget {
 class _ReservasiScreenState extends State<ReservasiScreen> {
   final _formKey = GlobalKey<FormState>();
   
-  // Data Form
   TextEditingController _nameController = TextEditingController();
   TextEditingController _phoneController = TextEditingController();
   TextEditingController _paxController = TextEditingController();
   
-  // Pilihan Tanggal dan Waktu
   DateTime? _selectedDate;
   TimeOfDay? _selectedTime;
   String _selectedTableType = 'Reguler'; 
@@ -75,7 +73,6 @@ class _ReservasiScreenState extends State<ReservasiScreen> {
 
   void _submitReservation() {
     if (_formKey.currentState!.validate() && _selectedDate != null && _selectedTime != null) {
-      // Gabungkan tanggal dan waktu
       final DateTime selectedDateTime = DateTime(
         _selectedDate!.year,
         _selectedDate!.month,
@@ -93,12 +90,10 @@ class _ReservasiScreenState extends State<ReservasiScreen> {
         'confirmationTime': DateTime.now(), // Waktu konfirmasi
       };
 
-      // Tampilkan SnackBar sukses (opsional)
       ScaffoldMessenger.of(context).showSnackBar(
         const SnackBar(content: Text('Reservasi sedang diproses...')),
       );
 
-      // Navigasi ke Layar Konfirmasi Reservasi
       Navigator.pushReplacement(
         context,
         MaterialPageRoute(
@@ -130,7 +125,6 @@ class _ReservasiScreenState extends State<ReservasiScreen> {
               const Text('Isi detail untuk memesan meja Anda.', style: TextStyle(fontSize: 16, color: Colors.black87)),
               const SizedBox(height: 20),
 
-              // Nama Pemesan
               TextFormField(
                 controller: _nameController,
                 decoration: const InputDecoration(
@@ -147,7 +141,6 @@ class _ReservasiScreenState extends State<ReservasiScreen> {
               ),
               const SizedBox(height: 15),
 
-              // Nomor Telepon
               TextFormField(
                 controller: _phoneController,
                 keyboardType: TextInputType.phone,
@@ -165,7 +158,6 @@ class _ReservasiScreenState extends State<ReservasiScreen> {
               ),
               const SizedBox(height: 15),
 
-              // Jumlah Tamu (Pax)
               TextFormField(
                 controller: _paxController,
                 keyboardType: TextInputType.number,
@@ -189,7 +181,7 @@ class _ReservasiScreenState extends State<ReservasiScreen> {
 
               Row(
                 children: [
-                  // Picker Tanggal
+                  
                   Expanded(
                     child: InkWell(
                       onTap: () => _selectDate(context),
@@ -210,7 +202,6 @@ class _ReservasiScreenState extends State<ReservasiScreen> {
                   ),
                   const SizedBox(width: 15),
                   
-                  // Picker Waktu
                   Expanded(
                     child: InkWell(
                       onTap: () => _selectTime(context),
@@ -232,8 +223,7 @@ class _ReservasiScreenState extends State<ReservasiScreen> {
                 ],
               ),
               const SizedBox(height: 30),
-
-              // PILIHAN TIPE MEJA
+              
               const Text('Tipe Meja:', style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold)),
               const SizedBox(height: 10),
               
@@ -242,8 +232,7 @@ class _ReservasiScreenState extends State<ReservasiScreen> {
                 children: _tableTypes.map((type) => _buildTableTypeChip(type)).toList(),
               ),
               const SizedBox(height: 40),
-
-              // Tombol Konfirmasi Reservasi
+              
               ElevatedButton.icon(
                 icon: const Icon(Icons.check_circle, color: Colors.white),
                 label: const Text('KONFIRMASI RESERVASI', style: TextStyle(color: Colors.white, fontSize: 18)),
@@ -261,7 +250,6 @@ class _ReservasiScreenState extends State<ReservasiScreen> {
     );
   }
 
-  // WIDGET PEMBANTU: Chip Pilihan Tipe Meja
   Widget _buildTableTypeChip(String type) {
     final isSelected = _selectedTableType == type;
     return ChoiceChip(
