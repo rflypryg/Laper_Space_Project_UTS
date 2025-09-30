@@ -1,10 +1,7 @@
-// lib/screens/receipt_screen.dart
-
 import 'package:flutter/material.dart';
 import '../models/cart.dart'; 
 import 'package:intl/intl.dart'; 
 
-// Untuk memformat mata uang dan tanggal
 final currencyFormatter = NumberFormat.currency(locale: 'id', symbol: 'Rp ', decimalDigits: 0);
 
 class ReceiptScreen extends StatelessWidget {
@@ -12,17 +9,13 @@ class ReceiptScreen extends StatelessWidget {
   
   const ReceiptScreen({super.key, required this.receiptData});
 
-  // Fungsi untuk mendapatkan referensi unik 14 digit (LPRYYMMDDHHMMSS)
   String _generateRefNumber(DateTime dt) {
     return 'LPR${DateFormat('yyMMddHHmmss').format(dt)}'; 
   }
-
-  // Fungsi untuk memformat tanggal dan waktu
   String _formatPaymentTime(DateTime dt) {
     return DateFormat('d MMM yyyy, HH:mm').format(dt);
   }
-  
-  // Widget Pembantu untuk Box Informasi Biaya
+
   Widget _buildSummaryBox(String label, double amount, {Color amountColor = Colors.black87}) {
     return Container(
       padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 8),
@@ -44,8 +37,6 @@ class ReceiptScreen extends StatelessWidget {
       ),
     );
   }
-
-  // Widget untuk detail pesanan di bagian bawah (Rincian Item)
   Widget _buildOrderItemsList(List<CartItem> items) {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
@@ -135,7 +126,6 @@ class ReceiptScreen extends StatelessWidget {
                   ),
                   child: Column(
                     children: [
-                      // Status Sukses
                       const CircleAvatar(
                         radius: 30,
                         backgroundColor: Colors.green,
@@ -153,7 +143,6 @@ class ReceiptScreen extends StatelessWidget {
                       ),
                       const SizedBox(height: 25),
 
-                      // Total Pembayaran (Fokus Besar)
                       const Text('Total Pembayaran', style: TextStyle(fontSize: 16, color: Colors.grey)),
                       Text(
                         currencyFormatter.format(totalFinal),
@@ -161,7 +150,6 @@ class ReceiptScreen extends StatelessWidget {
                       ),
                       const SizedBox(height: 20),
 
-                      // Detail Referensi dan Waktu
                       _buildDetailRowCard(
                         refNumber, 
                         _formatPaymentTime(dateTime), 
@@ -170,7 +158,6 @@ class ReceiptScreen extends StatelessWidget {
                       ),
                       const SizedBox(height: 25),
 
-                      // Rincian Biaya Tambahan (Subtotal, Tax)
                       Row(
                         children: [
                             Expanded(child: _buildSummaryBox('Subtotal Item', subtotal)),
@@ -180,11 +167,9 @@ class ReceiptScreen extends StatelessWidget {
                       ),
                       const SizedBox(height: 25),
 
-                      // Rincian Item yang Dipesan
                       _buildOrderItemsList(items),
                       const Divider(height: 30),
 
-                      // Tombol Download/Cetak
                       TextButton.icon(
                         icon: const Icon(Icons.download, color: Colors.blue),
                         label: const Text('Get PDF Receipt', style: TextStyle(color: Colors.blue, fontWeight: FontWeight.bold)),
@@ -200,10 +185,8 @@ class ReceiptScreen extends StatelessWidget {
                 
                 const SizedBox(height: 20),
 
-                // Tombol Done (Keluar)
                 ElevatedButton(
                   onPressed: () {
-                    // Kembali ke halaman utama (Home)
                     Navigator.popUntil(context, (route) => route.isFirst); 
                   },
                   style: ElevatedButton.styleFrom(
@@ -220,8 +203,6 @@ class ReceiptScreen extends StatelessWidget {
       ),
     );
   }
-
-  // WIDGET PEMBANTU untuk Detail dalam Kartu (Ref, Waktu, Method, Option)
   Widget _buildDetailRowCard(String refNumber, String paymentTime, String method, String option) {
     return Column(
       children: [
@@ -243,8 +224,6 @@ class ReceiptScreen extends StatelessWidget {
       ],
     );
   }
-
-  // Widget Pembantu untuk Box Informasi Kecil (Ref, Waktu, Method, Option)
   Widget _buildInfoBox(String label, String value) {
     return Container(
       padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 8),
