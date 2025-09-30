@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'edit_profile_screen.dart';
 import 'home_screen.dart';
 
 class ProfileScreen extends StatelessWidget {
@@ -9,15 +8,16 @@ class ProfileScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     const String userName = 'Ahmad Rizki';
     const String userHandle = '@rizkifoodie';
-    const String userBio = 'Pecinta kuliner nusantara 🍜 | Food blogger | Selalu mencari hidden gems makanan enak di sekitar Jakarta!';
+    const String userBio =
+        'Pecinta kuliner nusantara 🍜 | Food blogger | Selalu mencari hidden gems makanan enak di sekitar Jakarta!';
     const String userLocation = 'Jakarta Selatan, Indonesia';
     const String userWebsite = 'rizkifoodie.blog';
     const String userJoined = 'Januari 2023';
-    
+
     const int totalOrders = 89;
     const int totalReviews = 45;
     const double totalPoints = 2.1;
-    
+
     const int currentPoints = 2150;
     const int nextLevelPoints = 5000;
 
@@ -30,7 +30,7 @@ class ProfileScreen extends StatelessWidget {
               Navigator.of(context).pop();
             } else {
               Navigator.pushReplacement(
-                context, 
+                context,
                 MaterialPageRoute(builder: (context) => const HomeScreen()),
               );
             }
@@ -65,10 +65,14 @@ class ProfileScreen extends StatelessWidget {
                               children: [
                                 Text(
                                   userName,
-                                  style: Theme.of(context).textTheme.titleLarge!.copyWith(fontWeight: FontWeight.bold),
+                                  style: Theme.of(context)
+                                      .textTheme
+                                      .titleLarge!
+                                      .copyWith(fontWeight: FontWeight.bold),
                                 ),
                                 const SizedBox(width: 5),
-                                const Icon(Icons.check_circle, color: Colors.blue, size: 18),
+                                const Icon(Icons.check_circle,
+                                    color: Colors.blue, size: 18),
                               ],
                             ),
                             Text(
@@ -81,35 +85,31 @@ class ProfileScreen extends StatelessWidget {
                     ],
                   ),
                   const SizedBox(height: 15),
-                  
                   Text(userBio),
                   const SizedBox(height: 10),
 
                   _buildDetailRow(Icons.location_on_outlined, userLocation),
                   _buildDetailRow(Icons.link, userWebsite, isLink: true),
-                  _buildDetailRow(Icons.calendar_today_outlined, 'Bergabung $userJoined'),
-                  
+                  _buildDetailRow(
+                      Icons.calendar_today_outlined, 'Bergabung $userJoined'),
+
                   const SizedBox(height: 25),
 
+                  // hanya tombol Bagikan
                   Row(
                     children: [
                       Expanded(
-                        child: _buildProfileButton('Edit Profil', Icons.edit, isPrimary: true, onTap: () {
-                          Navigator.push(context, MaterialPageRoute(builder: (context) => const EditProfileScreen()));
-                        }),
-                      ),
-                      const SizedBox(width: 10),
-                      Expanded(
-                        child: _buildProfileButton('Bagikan', Icons.share, onTap: () {}),
+                        child: _buildProfileButton('Bagikan', Icons.share,
+                            onTap: () {}),
                       ),
                     ],
                   ),
                 ],
               ),
             ),
-            
+
             const Divider(thickness: 1, height: 1),
-            
+
             Padding(
               padding: const EdgeInsets.symmetric(vertical: 15.0),
               child: Row(
@@ -121,21 +121,34 @@ class ProfileScreen extends StatelessWidget {
                 ],
               ),
             ),
-            
-            const Divider(thickness: 1, height: 1),
-            
-            _buildMemberProgress(context, currentPoints, nextLevelPoints),
-            
+
             const Divider(thickness: 1, height: 1),
 
-            _buildMenuTile(context, Icons.history, 'Riwayat Pesanan', onTap: () {}),
-            _buildMenuTile(context, Icons.restaurant_menu_outlined, 'Restoran Favorit', onTap: () {}),
-            _buildMenuTile(context, Icons.location_on_outlined, 'Alamat Pengiriman', onTap: () {}),
-            _buildMenuTile(context, Icons.credit_card_outlined, 'Metode Pembayaran', onTap: () {}),
-            _buildMenuTile(context, Icons.star_border, 'Review & Rating', onTap: () {}),
-            _buildMenuTile(context, Icons.redeem_outlined, 'Promo & Voucher', onTap: () {}),
-            _buildMenuTile(context, Icons.settings_outlined, 'Pengaturan', onTap: () {}),
-            _buildMenuTile(context, Icons.help_outline, 'Bantuan', onTap: () {}),
+            _buildMemberProgress(context, currentPoints, nextLevelPoints),
+
+            const Divider(thickness: 1, height: 1),
+
+            _buildMenuTile(context, Icons.history, 'Riwayat Pesanan',
+                onTap: () {}),
+            _buildMenuTile(
+                context, Icons.restaurant_menu_outlined, 'Restoran Favorit',
+                onTap: () {}),
+            _buildMenuTile(
+                context, Icons.location_on_outlined, 'Alamat Pengiriman',
+                onTap: () {}),
+            _buildMenuTile(
+                context, Icons.credit_card_outlined, 'Metode Pembayaran',
+                onTap: () {}),
+            _buildMenuTile(context, Icons.star_border, 'Review & Rating',
+                onTap: () {}),
+            _buildMenuTile(
+                context, Icons.redeem_outlined, 'Promo & Voucher',
+                onTap: () {}),
+            _buildMenuTile(
+                context, Icons.settings_outlined, 'Pengaturan',
+                onTap: () {}),
+            _buildMenuTile(context, Icons.help_outline, 'Bantuan',
+                onTap: () {}),
 
             const SizedBox(height: 30),
           ],
@@ -164,7 +177,8 @@ class ProfileScreen extends StatelessWidget {
     );
   }
 
-  Widget _buildProfileButton(String text, IconData icon, {bool isPrimary = false, required VoidCallback onTap}) {
+  Widget _buildProfileButton(String text, IconData icon,
+      {bool isPrimary = false, required VoidCallback onTap}) {
     return SizedBox(
       height: 40,
       child: OutlinedButton(
@@ -177,7 +191,8 @@ class ProfileScreen extends StatelessWidget {
             borderRadius: BorderRadius.circular(10),
           ),
         ),
-        child: Text(text, style: const TextStyle(fontWeight: FontWeight.bold)),
+        child: Text(text,
+            style: const TextStyle(fontWeight: FontWeight.bold)),
       ),
     );
   }
@@ -197,8 +212,9 @@ class ProfileScreen extends StatelessWidget {
       ],
     );
   }
-  
-  Widget _buildMemberProgress(BuildContext context, int currentPoints, int nextLevelPoints) {
+
+  Widget _buildMemberProgress(
+      BuildContext context, int currentPoints, int nextLevelPoints) {
     final double progress = currentPoints / nextLevelPoints;
     final int pointsRemaining = nextLevelPoints - currentPoints;
 
@@ -224,31 +240,41 @@ class ProfileScreen extends StatelessWidget {
                   children: [
                     Icon(Icons.emoji_events, color: Colors.white, size: 24),
                     SizedBox(width: 8),
-                    Text('Member', style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold, fontSize: 16)),
+                    Text('Member',
+                        style: TextStyle(
+                            color: Colors.white,
+                            fontWeight: FontWeight.bold,
+                            fontSize: 16)),
                   ],
                 ),
                 Container(
-                  padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 4),
+                  padding:
+                      const EdgeInsets.symmetric(horizontal: 10, vertical: 4),
                   decoration: BoxDecoration(
                     color: Colors.amber,
                     borderRadius: BorderRadius.circular(20),
                   ),
-                  child: const Text('Gold', style: TextStyle(color: Colors.black87, fontWeight: FontWeight.bold, fontSize: 12)),
+                  child: const Text('Gold',
+                      style: TextStyle(
+                          color: Colors.black87,
+                          fontWeight: FontWeight.bold,
+                          fontSize: 12)),
                 ),
               ],
             ),
             const SizedBox(height: 10),
-            
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 const Text('Poin Kamu', style: TextStyle(color: Colors.white70)),
-                Text(currentPoints.toString(), style: const TextStyle(color: Colors.white, fontWeight: FontWeight.bold, fontSize: 20)),
+                Text(currentPoints.toString(),
+                    style: const TextStyle(
+                        color: Colors.white,
+                        fontWeight: FontWeight.bold,
+                        fontSize: 20)),
               ],
             ),
-            
             const SizedBox(height: 10),
-            
             LinearProgressIndicator(
               value: progress > 1.0 ? 1.0 : progress,
               backgroundColor: Colors.white38,
@@ -257,19 +283,17 @@ class ProfileScreen extends StatelessWidget {
               minHeight: 10,
             ),
             const SizedBox(height: 8),
-            
             Text(
               '${pointsRemaining.toString()} poin lagi untuk naik level',
               style: const TextStyle(color: Colors.white70, fontSize: 13),
             ),
-            
             const SizedBox(height: 15),
-
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 _buildSmallActionButton(Icons.toll_outlined, 'Tukar Poin', () {}),
-                _buildSmallActionButton(Icons.arrow_forward, 'Lihat reward →', () {}),
+                _buildSmallActionButton(
+                    Icons.arrow_forward, 'Lihat reward →', () {}),
               ],
             ),
           ],
@@ -278,11 +302,14 @@ class ProfileScreen extends StatelessWidget {
     );
   }
 
-  Widget _buildSmallActionButton(IconData icon, String text, VoidCallback onTap) {
+  Widget _buildSmallActionButton(
+      IconData icon, String text, VoidCallback onTap) {
     return TextButton.icon(
       onPressed: onTap,
       icon: Icon(icon, color: Colors.white, size: 18),
-      label: Text(text, style: const TextStyle(color: Colors.white, fontWeight: FontWeight.bold)),
+      label: Text(text,
+          style:
+              const TextStyle(color: Colors.white, fontWeight: FontWeight.bold)),
       style: TextButton.styleFrom(
         backgroundColor: Colors.black.withOpacity(0.2),
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8)),
@@ -290,12 +317,14 @@ class ProfileScreen extends StatelessWidget {
       ),
     );
   }
-  
-  Widget _buildMenuTile(BuildContext context, IconData icon, String title, {required VoidCallback onTap}) {
+
+  Widget _buildMenuTile(BuildContext context, IconData icon, String title,
+      {required VoidCallback onTap}) {
     return Column(
       children: [
         ListTile(
-          contentPadding: const EdgeInsets.symmetric(horizontal: 20, vertical: 5),
+          contentPadding:
+              const EdgeInsets.symmetric(horizontal: 20, vertical: 5),
           leading: Icon(icon, color: Colors.black87, size: 28),
           title: Text(title, style: const TextStyle(fontWeight: FontWeight.w600)),
           trailing: const Icon(Icons.chevron_right, color: Colors.grey),
