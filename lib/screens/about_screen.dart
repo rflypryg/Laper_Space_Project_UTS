@@ -1,5 +1,3 @@
-// lib/screens/contact_us_screen.dart (Nama file BARU)
-
 import 'package:flutter/material.dart';
 import 'package:url_launcher/url_launcher.dart'; 
 
@@ -10,7 +8,7 @@ class ContactUsScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Contact Us'), // Judul diubah
+        title: const Text('Contact Us'), 
         elevation: 0,
       ),
       body: SingleChildScrollView(
@@ -18,7 +16,6 @@ class ContactUsScreen extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            // Header
             const Text(
               'Contact Us',
               style: TextStyle(fontSize: 28, fontWeight: FontWeight.bold, color: Colors.black87),
@@ -30,23 +27,18 @@ class ContactUsScreen extends StatelessWidget {
             ),
             const SizedBox(height: 30),
 
-            // 1. INFORMASI KONTAK (Address, Phone, Email)
             _buildInfoSection(context),
             const SizedBox(height: 30),
 
-            // 2. JAM OPERASIONAL
             _buildOperatingHours(),
             const SizedBox(height: 30),
 
-            // 3. KIRIM PESAN (Formulir)
             _buildSendMessageForm(context),
             const SizedBox(height: 30),
 
-            // 4. FOLLOW US (Media Sosial)
             _buildFollowUs(),
             const SizedBox(height: 30),
 
-            // 5. LOKASI (Peta)
             _buildFindUs(context),
             const SizedBox(height: 50),
           ],
@@ -55,14 +47,10 @@ class ContactUsScreen extends StatelessWidget {
     );
   }
 
-  // =========================================================
-  // WIDGET BAGIAN 1: INFORMASI KONTAK (Address, Phone, Email)
-  // =========================================================
   Widget _buildInfoSection(BuildContext context) {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        // Address Card
         Card(
           elevation: 2,
           margin: EdgeInsets.zero,
@@ -77,10 +65,8 @@ class ContactUsScreen extends StatelessWidget {
         ),
         const SizedBox(height: 15),
 
-        // Phone & Email
         Row(
           children: [
-            // Phone
             Expanded(
               child: _buildSmallInfoCard(
                 icon: Icons.phone,
@@ -90,7 +76,6 @@ class ContactUsScreen extends StatelessWidget {
               ),
             ),
             const SizedBox(width: 15),
-            // Email
             Expanded(
               child: _buildSmallInfoCard(
                 icon: Icons.email,
@@ -105,7 +90,6 @@ class ContactUsScreen extends StatelessWidget {
     );
   }
 
-  // Widget Pembantu untuk Phone/Email
   Widget _buildSmallInfoCard({
     required IconData icon, 
     required String title, 
@@ -134,11 +118,7 @@ class ContactUsScreen extends StatelessWidget {
     );
   }
 
-  // =========================================================
-  // WIDGET BAGIAN 2: JAM OPERASIONAL
-  // =========================================================
   Widget _buildOperatingHours() {
-    // Simulasi status buka/tutup (Misal hari Selasa tutup)
     final bool isClosedToday = DateTime.now().weekday == DateTime.tuesday; 
 
     return Card(
@@ -160,8 +140,6 @@ class ContactUsScreen extends StatelessWidget {
             const Divider(height: 20),
             
             _buildHourRow('Monday - Sunday', '10.00 - 22.00 WIB', isClosed: false),
-            // Contoh hari yang tutup:
-            // _buildHourRow('Tuesday', 'CLOSED', isClosed: true), 
           ],
         ),
       ),
@@ -187,9 +165,6 @@ class ContactUsScreen extends StatelessWidget {
     );
   }
 
-  // =========================================================
-  // WIDGET BAGIAN 3: KIRIM PESAN (FORM)
-  // =========================================================
   Widget _buildSendMessageForm(BuildContext context) {
     final GlobalKey<FormState> formKey = GlobalKey<FormState>();
     
@@ -270,9 +245,6 @@ class ContactUsScreen extends StatelessWidget {
     );
   }
 
-  // =========================================================
-  // WIDGET BAGIAN 4: MEDIA SOSIAL
-  // =========================================================
   Widget _buildFollowUs() {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
@@ -289,14 +261,12 @@ class ContactUsScreen extends StatelessWidget {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                // PERBAIKAN: Menggunakan Wrap untuk menghindari overflow
                 Wrap(
-                  spacing: 10.0, // Jarak horizontal antar tombol
-                  runSpacing: 10.0, // Jarak vertikal antar baris tombol
+                  spacing: 10.0, 
+                  runSpacing: 10.0, 
                   children: [
                     _buildSocialButton('Instagram', Icons.camera_alt, 'https://instagram.com/laparspace'),
                     _buildSocialButton('Facebook', Icons.facebook, 'https://facebook.com/laparspace'),
-                    // Menggunakan Icons.ac_unit sebagai placeholder untuk Twitter jika Icons.twitter tidak tersedia
                     _buildSocialButton('Twitter', Icons.ac_unit, 'https://twitter.com/laparspace', icon: Icons.person), 
                   ],
                 ),
@@ -324,9 +294,6 @@ class ContactUsScreen extends StatelessWidget {
       ),
     );
   }
-  // =========================================================
-  // WIDGET BAGIAN 5: LOKASI (MAP)
-  // =========================================================
   Widget _buildFindUs(BuildContext context) {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
@@ -341,8 +308,7 @@ class ContactUsScreen extends StatelessWidget {
           child: Padding(
             padding: const EdgeInsets.all(20.0),
             child: Column(
-              children: [
-                // Placeholder Map 
+              children: [ 
                 Container(
                   height: 150,
                   width: double.infinity,
