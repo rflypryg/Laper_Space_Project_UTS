@@ -1,13 +1,8 @@
-// lib/screens/cart_screen.dart (DIREVISI)
-
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import '../models/cart.dart'; 
 import 'order_choice_screen.dart'; 
 
-// =========================================================
-// WIDGET UTAMA: CartScreen (TETAP SAMA)
-// =========================================================
 class CartScreen extends StatelessWidget {
   const CartScreen({super.key});
 
@@ -34,9 +29,8 @@ class CartScreen extends StatelessWidget {
                       ),
               ),
               
-              // Hanya menampilkan ringkasan checkout minimal
               if (cart.items.isNotEmpty)
-                MinimalCheckoutSummary(cart: cart), // Ganti nama widget untuk lebih jelas
+                MinimalCheckoutSummary(cart: cart), 
             ],
           ),
         );
@@ -45,11 +39,7 @@ class CartScreen extends StatelessWidget {
   }
 }
 
-// ---------------------------------------------------------
-// WIDGET PEMBANTU 1: CartItemWidget (TETAP SAMA)
-// ---------------------------------------------------------
 class CartItemWidget extends StatelessWidget {
-// ... (Kode CartItemWidget tetap sama) ...
   final CartItem item;
   const CartItemWidget({super.key, required this.item});
 
@@ -87,9 +77,6 @@ class CartItemWidget extends StatelessWidget {
   }
 }
 
-// ---------------------------------------------------------
-// WIDGET PEMBANTU 2: MinimalCheckoutSummary (BARU DAN MINIMAL)
-// ---------------------------------------------------------
 class MinimalCheckoutSummary extends StatelessWidget {
   final CartProvider cart;
   const MinimalCheckoutSummary({super.key, required this.cart});
@@ -99,7 +86,7 @@ class MinimalCheckoutSummary extends StatelessWidget {
     const double taxRate = 0.10; 
     final double subtotal = cart.totalAmount;
     final double tax = subtotal * taxRate;
-    final double totalFinal = subtotal + tax; // Hitung total final tetap di sini, tapi dibawa
+    final double totalFinal = subtotal + tax; 
 
     return Container(
       padding: const EdgeInsets.all(16.0),
@@ -111,8 +98,7 @@ class MinimalCheckoutSummary extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          
-          // Hanya Total Harga Item (Subtotal)
+
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
@@ -130,7 +116,6 @@ class MinimalCheckoutSummary extends StatelessWidget {
             icon: const Icon(Icons.arrow_forward, color: Colors.white),
             label: const Text('Lanjut ke Checkout & Pembayaran', style: TextStyle(color: Colors.white, fontSize: 16)),
             onPressed: () {
-              // Data Ringkasan lengkap (tanpa paymentMethod yang dipilih) untuk dibawa
               final summaryData = {
                 'items': cart.items,
                 'subtotal': subtotal,
