@@ -111,7 +111,6 @@ class MinimalCheckoutSummary extends StatelessWidget {
           ),
           const SizedBox(height: 15),
           
-          // Tombol Lanjut ke Opsi Pesanan
           ElevatedButton.icon(
             icon: const Icon(Icons.arrow_forward, color: Colors.white),
             label: const Text('Lanjut ke Checkout & Pembayaran', style: TextStyle(color: Colors.white, fontSize: 16)),
@@ -121,7 +120,7 @@ class MinimalCheckoutSummary extends StatelessWidget {
                 'subtotal': subtotal,
                 'tax': tax,
                 'totalFinal': totalFinal,
-                'paymentMethod': 'Cash', // Default atau Biarkan kosong, nanti dipilih di OrderChoiceScreen
+                'paymentMethod': 'Cash', 
               };
               
               Navigator.push(
