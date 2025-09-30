@@ -39,7 +39,6 @@ class MenuDetailScreen extends StatelessWidget {
                   ),
                   const SizedBox(height: 10),
                   
-                  // Kategori dan Harga
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
@@ -69,15 +68,12 @@ class MenuDetailScreen extends StatelessWidget {
                     textAlign: TextAlign.justify,
                   ),
                   const SizedBox(height: 40),
-                  
-                  // Tombol Tambah ke Keranjang
                   ElevatedButton.icon(
                     onPressed: () {
                       cart.addItem(CartItem(name: menuItem.name, price: menuItem.price));
                       ScaffoldMessenger.of(context).showSnackBar(
                         SnackBar(content: Text('${menuItem.name} ditambahkan ke Keranjang!')),
                       );
-                      // Opsional: Kembali ke halaman menu setelah menambahkan
                       Navigator.pop(context); 
                     },
                     icon: const Icon(Icons.add_shopping_cart, color: Colors.white),
