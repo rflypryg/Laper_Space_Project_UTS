@@ -18,11 +18,9 @@ class HomeScreen extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            // 1. Banner Selamat Datang (dengan Logo di Atas)
             WelcomeBanner(),
             const SizedBox(height: 30),
 
-            // 2. Promo Section (Vertikal)
             PromoSectionVertical(),
           ],
         ),
@@ -48,17 +46,15 @@ class WelcomeBanner extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
-          // LOGO BESAR
           Image.asset(
             'assets/logo.png',
-            width: 150,   // gedein logo
+            width: 150,   
             height: 150,
             fit: BoxFit.contain,
           ),
 
-          const SizedBox(height: 8), // jarak logo ke teks kecil aja
+          const SizedBox(height: 8), 
 
-          // TEKS SELAMAT DATANG
           Text(
             'Selamat Datang di LaperSpace!',
             textAlign: TextAlign.center,
@@ -68,15 +64,14 @@ class WelcomeBanner extends StatelessWidget {
                 ),
           ),
 
-          const SizedBox(height: 4), // rapetin lagi
-
+          const SizedBox(height: 4), 
           Text(
             'Saatnya menikmati hidangan favorit Anda.',
             textAlign: TextAlign.center,
             style: Theme.of(context).textTheme.bodyMedium,
           ),
 
-          const SizedBox(height: 10), // jarak tombol secukupnya
+          const SizedBox(height: 10),
 
           
         ],
