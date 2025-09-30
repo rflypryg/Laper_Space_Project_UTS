@@ -1,7 +1,4 @@
-// lib/models/cart.dart
-
 import 'package:flutter/material.dart';
-// Note: Jangan lupa 'flutter pub get' untuk paket provider!
 
 class CartItem {
   final String name;
