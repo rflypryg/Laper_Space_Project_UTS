@@ -1,9 +1,5 @@
-// lib/models/menu_item.dart
 import 'package:flutter/material.dart';
 
-// =========================================================
-// 1. MODEL MENU ITEM
-// =========================================================
 class MenuItem {
   final String name;
   final String description; // Deskripsi singkat
@@ -23,9 +19,6 @@ class MenuItem {
 }
 
 
-// =========================================================
-// 2. MODEL CART/PROVIDER (Placeholder agar tidak error)
-// =========================================================
 class CartItem {
   final String name;
   final double price;
@@ -34,9 +27,7 @@ class CartItem {
 }
 
 class CartProvider extends ChangeNotifier {
-  // Hanya placeholder untuk memastikan MenuDetailScreen berjalan
   void addItem(CartItem item) {
-    // Logika keranjang yang sebenarnya harus ada di sini
     debugPrint('${item.name} ditambahkan ke keranjang.');
     notifyListeners();
   }
