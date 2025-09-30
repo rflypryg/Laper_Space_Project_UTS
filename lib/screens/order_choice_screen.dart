@@ -1,5 +1,3 @@
-// lib/screens/order_choice_screen.dart
-
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import '../models/cart.dart'; 
@@ -33,12 +31,9 @@ class _OrderChoiceScreenState extends State<OrderChoiceScreen> {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
-            
-            // DETAIL BIAYA / NOTA RINGKAS
             _buildOrderDetails(items, subtotal, tax, totalFinal),
             const SizedBox(height: 30),
 
-            // PILIHAN METODE PEMBAYARAN
             const Text(
               'Pilih Metode Pembayaran:',
               style: TextStyle(fontSize: 18, fontWeight: FontWeight.w600),
@@ -53,8 +48,6 @@ class _OrderChoiceScreenState extends State<OrderChoiceScreen> {
             ),
             const SizedBox(height: 30),
 
-
-            // PILIHAN PESANAN (Makan di Tempat / Bawa Pulang)
             const Text(
               'Bagaimana Anda ingin menikmati pesanan ini?',
               style: TextStyle(fontSize: 18, fontWeight: FontWeight.w600),
@@ -66,7 +59,6 @@ class _OrderChoiceScreenState extends State<OrderChoiceScreen> {
             _buildOptionCard('Bawa Pulang (Take-away)', Icons.shopping_bag, 'Bawa Pulang'),
             const SizedBox(height: 30),
 
-            // TOMBOL FINALISASI
             ElevatedButton.icon(
               icon: const Icon(Icons.payment, color: Colors.white),
               label: Text('BAYAR Rp ${totalFinal.toStringAsFixed(0)} & CETAK RESI', style: const TextStyle(color: Colors.white, fontSize: 18)),
@@ -77,8 +69,6 @@ class _OrderChoiceScreenState extends State<OrderChoiceScreen> {
                   'paymentMethod': _selectedPaymentMethod, 
                   'dateTime': DateTime.now(),
                 };
-
-                // Clear cart setelah pembayaran berhasil
                 cart.clearCart();
 
                 Navigator.pushReplacement( 
@@ -100,7 +90,6 @@ class _OrderChoiceScreenState extends State<OrderChoiceScreen> {
     );
   }
 
-  // WIDGET PEMBANTU: Pilihan Metode Pembayaran
   Widget _buildPaymentOption(String method) {
     final isSelected = _selectedPaymentMethod == method;
     return GestureDetector(
@@ -119,8 +108,6 @@ class _OrderChoiceScreenState extends State<OrderChoiceScreen> {
       ),
     );
   }
-
-  // WIDGET PEMBANTU: Detail Pesanan dan Biaya
   Widget _buildOrderDetails(List<CartItem> items, double subtotal, double tax, double totalFinal) {
     return Card(
       elevation: 4,
@@ -156,7 +143,6 @@ class _OrderChoiceScreenState extends State<OrderChoiceScreen> {
     );
   }
 
-  // WIDGET PEMBANTU: Baris Ringkasan Biaya
   Widget _buildSummaryRow(String title, double amount, {bool isTax = false}) {
     return Padding(
       padding: const EdgeInsets.symmetric(vertical: 3.0),
@@ -170,7 +156,6 @@ class _OrderChoiceScreenState extends State<OrderChoiceScreen> {
     );
   }
 
-  // WIDGET PEMBANTU: Baris Detail Item
   Widget _buildItemRow(CartItem item) {
     final itemTotal = item.price * item.quantity;
     return Padding(
@@ -191,7 +176,6 @@ class _OrderChoiceScreenState extends State<OrderChoiceScreen> {
     );
   }
 
-  // WIDGET PEMBANTU: Opsi Pilihan
   Widget _buildOptionCard(String title, IconData icon, String value) {
     final isSelected = _selectedOption == value;
     return GestureDetector(
