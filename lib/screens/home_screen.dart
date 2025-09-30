@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'profile_screen.dart';
+import 'menu_screen.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
@@ -7,31 +9,38 @@ class HomeScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        automaticallyImplyLeading: false, 
         title: const Text('LaperSpace'),
+        elevation: 0,
+        backgroundColor: Colors.white, 
+        foregroundColor: Colors.black,
         actions: [
-          IconButton(icon: const Icon(Icons.account_circle), onPressed: () {}),
+          IconButton(
+            icon: const Icon(Icons.person), 
+            onPressed: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => const ProfileScreen(), 
+                ),
+              );
+            },
+          ),
         ],
       ),
-      body: const SingleChildScrollView(
-        padding: EdgeInsets.all(16.0),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            WelcomeBanner(),
-            const SizedBox(height: 30),
-
-            PromoSectionVertical(),
-          ],
-        ),
+      
+      body: ListView(
+        padding: const EdgeInsets.symmetric(horizontal: 15.0, vertical: 10.0),
+        children: const [
+          WelcomeBanner(),   
+          SizedBox(height: 30),
+          PromoSectionVertical(),          
+          SizedBox(height: 20),
+        ],
       ),
     );
   }
 }
 
-// =========================================================
-// WIDGET BARU: Banner Selamat Datang dengan Logo di Atas
-// =========================================================
 class WelcomeBanner extends StatelessWidget {
   const WelcomeBanner({super.key});
 
@@ -40,7 +49,7 @@ class WelcomeBanner extends StatelessWidget {
     return Container(
       padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 20),
       decoration: BoxDecoration(
-        color: Colors.orange.shade100,
+        color: Colors.orange.shade100, 
         borderRadius: BorderRadius.circular(15),
       ),
       child: Column(
@@ -48,13 +57,14 @@ class WelcomeBanner extends StatelessWidget {
         children: [
           Image.asset(
             'assets/logo.png',
-            width: 150,   
+            width: 150, 
             height: 150,
             fit: BoxFit.contain,
+            errorBuilder: (context, error, stackTrace) {
+              return const Icon(Icons.restaurant, size: 100, color: Colors.orange);
+            },
           ),
-
           const SizedBox(height: 8), 
-
           Text(
             'Selamat Datang di LaperSpace!',
             textAlign: TextAlign.center,
@@ -71,18 +81,37 @@ class WelcomeBanner extends StatelessWidget {
             style: Theme.of(context).textTheme.bodyMedium,
           ),
 
-          const SizedBox(height: 10),
-
-          
+          const SizedBox(height: 20), 
+          ElevatedButton(
+            onPressed: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => const MenuScreen()),
+              );
+            },
+            style: ElevatedButton.styleFrom(
+              backgroundColor: Colors.orange, 
+              padding: const EdgeInsets.symmetric(horizontal: 40, vertical: 15),
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(10),
+              ),
+              elevation: 4,
+            ),
+            child: const Text(
+              'Lihat Menu',
+              style: TextStyle(
+                fontSize: 18, 
+                fontWeight: FontWeight.bold, 
+                color: Colors.white
+              ),
+            ),
+          ),
         ],
       ),
     );
   }
 }
 
-// =========================================================
-// WIDGET: Promo Section (Vertikal - TIDAK BERUBAH)
-// =========================================================
 class PromoSectionVertical extends StatelessWidget {
   const PromoSectionVertical({super.key});
 
@@ -111,10 +140,10 @@ class PromoSectionVertical extends StatelessWidget {
           children: promos.map((promo) {
             return _buildPromoCardVertical(
               context, 
-              promo['title']!, 
-              promo['code']!, 
-              promo['color']!, 
-              promo['icon']!
+              promo['title'] as String, 
+              promo['code'] as String, 
+              promo['color'] as Color, 
+              promo['icon'] as IconData
             );
           }).toList(),
         ),
@@ -161,7 +190,7 @@ class PromoSectionVertical extends StatelessWidget {
           },
         ),
         onTap: () {
-           ScaffoldMessenger.of(context).showSnackBar(
+            ScaffoldMessenger.of(context).showSnackBar(
               SnackBar(content: Text('Detail promo: $title')),
             );
         },
