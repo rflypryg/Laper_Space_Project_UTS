@@ -103,7 +103,7 @@ class MainNavigationShellState extends State<MainNavigationShell> {
         return Stack(
           alignment: Alignment.center,
           children: [
-            Icon(_navItemsData[2].icon, color: color), // Icon Cart
+            Icon(_navItemsData[2].icon, color: color),   
             if (itemCount > 0)
               Positioned(
                 top: 0,
