@@ -1,4 +1,4 @@
-import 'package:flutter/material.dart'; //package
+import 'package:flutter/material.dart'; 
 import 'profile_screen.dart';
 import 'menu_screen.dart';
 
