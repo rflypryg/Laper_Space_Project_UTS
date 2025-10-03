@@ -10,11 +10,8 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
-  
-  # Untuk ikon dan utilitas umum
   cupertino_icons: ^1.0.2
   
-  # Untuk state management sederhana (opsional, tapi disarankan)
   provider: ^6.0.5
 
 dev_dependencies:
@@ -26,11 +23,49 @@ dev_dependencies:
 
 flutter:
   uses-material-design: true
-
-  # Jika Anda ingin menambahkan gambar dummy di folder 'assets/'
   assets:
     - assets/logo.png
-    - assets/makanan/nasi_goreng.png
-    - assets/makanan/ayam_geprek.png
 
-     
+    - assets/makanan/nasi_goreng.jpg
+    - assets/makanan/ayam_geprek.jpg
+    - assets/makanan/mie_goreng.jpg
+    - assets/makanan/sate_ayam.jpg
+    - assets/makanan/soto_ayam.jpg
+    - assets/makanan/bakso_malang.jpg
+    - assets/makanan/ikan_bakar.jpg
+    - assets/makanan/ayam_bakar.jpg
+    - assets/makanan/nasi_padang.jpg
+    - assets/makanan/burger.jpg
+
+    - assets/minuman/teh_manis.jpg
+    - assets/minuman/es_jeruk.jpg
+    - assets/minuman/kopi_susu.jpg
+    - assets/minuman/teh_tarik.jpg
+    - assets/minuman/thai_tea.jpg
+    - assets/minuman/milkshake_coklat.jpg
+    - assets/minuman/jus_buah.jpg
+    - assets/minuman/lemon_tea.webp
+    - assets/minuman/es_kelapa.jpg
+    - assets/minuman/air_mineral.jpg
+
+    - assets/cemilan/french_fries.jpg
+    - assets/cemilan/tahu_krispi.jpg
+    - assets/cemilan/pisang_goreng.jpg
+    - assets/cemilan/singkong.jpg
+    - assets/cemilan/sosis_bakar.jpg
+    - assets/cemilan/cilok.jpg
+    - assets/cemilan/cireng.jpg
+    - assets/cemilan/dimsum.jpg
+    - assets/cemilan/onion_rings.jpg
+    - assets/cemilan/siomay.jpg
+
+    - assets/dessert/puding.jpg
+    - assets/dessert/es_campur.jpg
+    - assets/dessert/es_cendol.jpg
+    - assets/dessert/waffel.jpg
+    - assets/dessert/brownies.jpg
+    - assets/dessert/cheesecake.jpg
+    - assets/dessert/klepon.jpg
+    - assets/dessert/roti_bakar.jpg
+    - assets/dessert/pancake.jpg
+    - assets/dessert/mochi.jpg
