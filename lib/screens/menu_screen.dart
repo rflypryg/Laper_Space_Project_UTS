@@ -22,12 +22,13 @@ class MenuItem {
 }
 
 final List<MenuItem> fullMenu = [
+
   MenuItem(
     name: 'Nasi Goreng Spesial',
     description: 'Nasi goreng dengan ayam dan telur',
     fullDescription: 'Nasi goreng istimewa dengan suwiran ayam, telur mata sapi, acar, dan kerupuk.',
     price: 35000,
-    imageUrl: 'assets/makanan/nasi_goreng.png',
+    imageUrl: 'assets/makanan/nasi_goreng.jpg',
     category: 'Makanan Utama',
   ),
   MenuItem(
@@ -35,7 +36,7 @@ final List<MenuItem> fullMenu = [
     description: 'Ayam goreng tepung renyah',
     fullDescription: 'Ayam goreng crispy digeprek dengan sambal matah segar khas Bali.',
     price: 38000,
-    imageUrl: 'assets/makanan/ayam_geprek.png',
+    imageUrl: 'assets/makanan/ayam_geprek.jpg',
     category: 'Makanan Utama',
   ),
   MenuItem(
@@ -43,7 +44,7 @@ final List<MenuItem> fullMenu = [
     description: 'Mie goreng khas Jawa',
     fullDescription: 'Mie goreng tradisional dengan kecap manis, irisan ayam, telur, sawi, dan tomat.',
     price: 30000,
-    imageUrl: 'https://www.freepik.com/psd/mie-goreng-jawa',
+    imageUrl: 'assets/makanan/mie_goreng.jpg',
     category: 'Makanan Utama',
   ),
   MenuItem(
@@ -51,7 +52,7 @@ final List<MenuItem> fullMenu = [
     description: 'Sate ayam bumbu kacang',
     fullDescription: 'Tusukan sate ayam empuk dengan bumbu kacang kental, disajikan dengan lontong.',
     price: 28000,
-    imageUrl: 'https://www.shutterstock.com/search/sate-ayam-madura',
+    imageUrl: 'assets/makanan/sate_ayam.jpg',
     category: 'Makanan Utama',
   ),
   MenuItem(
@@ -59,7 +60,7 @@ final List<MenuItem> fullMenu = [
     description: 'Soto ayam bening',
     fullDescription: 'Kuah kaldu kuning gurih dengan suwiran ayam, telur rebus, soun, dan koya.',
     price: 25000,
-    imageUrl: 'https://www.shutterstock.com/image-photo/soto-ayam-bening-chicken-soup-indonesian-2642548145',
+    imageUrl: 'assets/makanan/soto_ayam.jpg',
     category: 'Makanan Utama',
   ),
   MenuItem(
@@ -67,7 +68,7 @@ final List<MenuItem> fullMenu = [
     description: 'Bakso dengan berbagai isi',
     fullDescription: 'Bakso urat, bakso halus, siomay, pangsit, tahu, dan mie kuning dalam kuah kaldu gurih.',
     price: 27000,
-    imageUrl: 'https://www.liputan6.com/regional/read/5834242/mencicip-bakso-malang-jaya-bersama-kuliner-bakso-viral-di-tangerang',
+    imageUrl: 'assets/makanan/bakso_malang.jpg',
     category: 'Makanan Utama',
   ),
   MenuItem(
@@ -75,7 +76,7 @@ final List<MenuItem> fullMenu = [
     description: 'Ikan bakar bumbu kecap',
     fullDescription: 'Ikan segar dibakar dengan bumbu kecap manis pedas.',
     price: 40000,
-    imageUrl: 'https://www.indogo.com.tw/2021/05/28/resep-ikan-bakar-kecap-rumahan-bikinnya-gampang-lezat-tak-tertandingi/',
+    imageUrl: 'assets/makanan/ikan_bakar.jpg',
     category: 'Makanan Utama',
   ),
   MenuItem(
@@ -83,7 +84,7 @@ final List<MenuItem> fullMenu = [
     description: 'Ayam bakar manis pedas',
     fullDescription: 'Ayam bakar dengan bumbu kecap, sambal, dan lalapan.',
     price: 35000,
-    imageUrl: 'https://www.gettyimages.com/detail/photo/ayam-bakar-kecap-or-grilled-chicken-with-soy-sauce-royalty-free-image/2195976542',
+    imageUrl: 'assets/makanan/ayam_bakar.jpg',
     category: 'Makanan Utama',
   ),
   MenuItem(
@@ -91,7 +92,7 @@ final List<MenuItem> fullMenu = [
     description: 'Nasi padang lauk lengkap',
     fullDescription: 'Nasi putih dengan rendang, sayur nangka, sambal ijo, dan kerupuk.',
     price: 45000,
-    imageUrl: 'https://www.dreamstime.com/photos-images/rendang-padang.html',
+    imageUrl: 'assets/makanan/nasi_padang.jpg',
     category: 'Makanan Utama',
   ),
   MenuItem(
@@ -99,9 +100,10 @@ final List<MenuItem> fullMenu = [
     description: 'Burger beef patty tebal',
     fullDescription: 'Roti bun lembut dengan patty sapi premium, keju cheddar, selada, tomat, dan saus spesial.',
     price: 42000,
-    imageUrl: 'https://www.shutterstock.com/search/hamburger',
+    imageUrl: 'assets/makanan/burger.jpg',
     category: 'Makanan Utama',
   ),
+
   MenuItem(
     name: 'Es Teh Manis',
     description: 'Teh manis dingin',
@@ -182,6 +184,168 @@ final List<MenuItem> fullMenu = [
     imageUrl: 'assets/minuman/air_mineral.jpg',
     category: 'Minuman',
   ),
+
+  MenuItem(
+    name: 'French Fries',
+    description: 'Kentang goreng renyah',
+    fullDescription: 'Kentang goreng krispi disajikan dengan saus sambal dan mayones.',
+    price: 22000,
+    imageUrl: 'assets/cemilan/french_fries.jpg',
+    category: 'Cemilan',
+  ),
+  MenuItem(
+    name: 'Tahu Krispi',
+    description: 'Tahu goreng crispy',
+    fullDescription: 'Tahu goreng renyah dengan bumbu pedas gurih.',
+    price: 15000,
+    imageUrl: 'assets/cemilan/tahu_krispi.jpg',
+    category: 'Cemilan',
+  ),
+  MenuItem(
+    name: 'Pisang Goreng Keju',
+    description: 'Pisang goreng topping keju',
+    fullDescription: 'Pisang goreng crispy dengan taburan keju dan susu kental manis.',
+    price: 20000,
+    imageUrl: 'assets/cemilan/pisang_goreng.jpg',
+    category: 'Cemilan',
+  ),
+  MenuItem(
+    name: 'Singkong Thailand',
+    description: 'Singkong keju manis',
+    fullDescription: 'Singkong rebus lembut disiram saus santan manis dan keju parut.',
+    price: 18000,
+    imageUrl: 'assets/cemilan/singkong.jpg',
+    category: 'Cemilan',
+  ),
+  MenuItem(
+    name: 'Sosis Bakar',
+    description: 'Sosis bakar manis pedas',
+    fullDescription: 'Sosis jumbo dibakar dengan saus pedas manis.',
+    price: 20000,
+    imageUrl: 'assets/cemilan/sosis_bakar.jpg',
+    category: 'Cemilan',
+  ),
+  MenuItem(
+    name: 'Cilok Bumbu Kacang',
+    description: 'Cilok khas Bandung',
+    fullDescription: 'Cilok kenyal disiram bumbu kacang gurih pedas.',
+    price: 15000,
+    imageUrl: 'assets/cemilan/cilok.jpg',
+    category: 'Cemilan',
+  ),
+  MenuItem(
+    name: 'Cireng Bandung',
+    description: 'Cireng isi pedas',
+    fullDescription: 'Cireng renyah dengan isi ayam pedas gurih.',
+    price: 18000,
+    imageUrl: 'assets/cemilan/cireng.jpg',
+    category: 'Cemilan',
+  ),
+  MenuItem(
+    name: 'Dimsum Ayam',
+    description: 'Dimsum kukus ayam',
+    fullDescription: 'Dimsum ayam lembut kukus dengan saus chili oil.',
+    price: 23000,
+    imageUrl: 'assets/cemilan/dimsum.jpg',
+    category: 'Cemilan',
+  ),
+  MenuItem(
+    name: 'Onion Rings',
+    description: 'Cincin bawang goreng',
+    fullDescription: 'Onion rings krispi dengan adonan tempura ringan.',
+    price: 24000,
+    imageUrl: 'assets/cemilan/onion_rings.jpg',
+    category: 'Cemilan',
+  ),
+  MenuItem(
+    name: 'Siomay Bandung',
+    description: 'Siomay ikan khas Bandung',
+    fullDescription: 'Siomay ikan kukus dengan tahu, kol, kentang, dan bumbu kacang.',
+    price: 20000,
+    imageUrl: 'assets/cemilan/siomay.jpg',
+    category: 'Cemilan',
+  ),
+
+  MenuItem(
+    name: 'Pudding Cokelat',
+    description: 'Puding cokelat lembut',
+    fullDescription: 'Puding cokelat dengan vla vanilla.',
+    price: 18000,
+    imageUrl: 'assets/dessert/puding.jpg',
+    category: 'Dessert',
+  ),
+  MenuItem(
+    name: 'Es Campur',
+    description: 'Es campur segar',
+    fullDescription: 'Campuran buah, cincau, tape, kolang-kaling dengan sirup manis.',
+    price: 20000,
+    imageUrl: 'assets/dessert/es_campur.jpg',
+    category: 'Dessert',
+  ),
+  MenuItem(
+    name: 'Es Cendol',
+    description: 'Es cendol segar',
+    fullDescription: 'Cendol hijau, santan, dan gula merah cair, dengan es serut.',
+    price: 15000,
+    imageUrl: 'assets/dessert/es_cendol.jpg',
+    category: 'Dessert',
+  ),
+  MenuItem(
+    name: 'Waffle Ice Cream',
+    description: 'Waffle hangat + es krim',
+    fullDescription: 'Waffle disajikan dengan es krim vanilla dan sirup cokelat.',
+    price: 30000,
+    imageUrl: 'assets/dessert/waffel.jpg',
+    category: 'Dessert',
+  ),
+  MenuItem(
+    name: 'Brownies Ice Cream',
+    description: 'Brownies hangat + es krim',
+    fullDescription: 'Brownies fudgy panas disajikan dengan es krim vanilla.',
+    price: 33000,
+    imageUrl: 'assets/dessert/brownies.jpg',
+    category: 'Dessert',
+  ),
+  MenuItem(
+    name: 'Cheesecake Mini',
+    description: 'Cheesecake lembut',
+    fullDescription: 'Mini cheesecake creamy dengan topping blueberry.',
+    price: 32000,
+    imageUrl: 'assets/dessert/cheesecake.jpg',
+    category: 'Dessert',
+  ),
+  MenuItem(
+    name: 'Klepon Tradisional',
+    description: 'Kue klepon isi gula merah',
+    fullDescription: 'Klepon kenyal isi gula merah cair dengan taburan kelapa parut.',
+    price: 12000,
+    imageUrl: 'assets/dessert/klepon.jpg',
+    category: 'Dessert',
+  ),
+  MenuItem(
+    name: 'Roti Bakar Manis',
+    description: 'Roti bakar topping cokelat',
+    fullDescription: 'Roti bakar lembut dengan topping cokelat lumer.',
+    price: 20000,
+    imageUrl: 'assets/dessert/roti_bakar.jpg',
+    category: 'Dessert',
+  ),
+  MenuItem(
+    name: 'Pancake Buah',
+    description: 'Pancake dengan topping buah',
+    fullDescription: 'Pancake lembut dengan stroberi, blueberry, dan madu.',
+    price: 28000,
+    imageUrl: 'assets/dessert/pancake.jpg',
+    category: 'Dessert',
+  ),
+  MenuItem(
+    name: 'Mochi Ice Cream',
+    description: 'Mochi isi es krim',
+    fullDescription: 'Kue mochi kenyal berisi es krim dengan berbagai rasa.',
+    price: 28000,
+    imageUrl: 'assets/dessert/mochi.jpg',
+    category: 'Dessert',
+  ),
 ];
 
 final List<String> categories = ['Semua', 'Makanan Utama', 'Minuman', 'Cemilan', 'Dessert'];
@@ -199,13 +363,7 @@ class _MenuScreenState extends State<MenuScreen> {
   @override
   Widget build(BuildContext context) {
     final screenWidth = MediaQuery.of(context).size.width;
-
-    int crossAxisCount = 2;
-    if (screenWidth >= 900) {
-      crossAxisCount = 3;
-    } else if (screenWidth < 600) {
-      crossAxisCount = 2;
-    }
+    int crossAxisCount = screenWidth >= 900 ? 3 : 2;
 
     final filteredMenu = _selectedCategory == 'Semua'
         ? fullMenu
@@ -224,7 +382,7 @@ class _MenuScreenState extends State<MenuScreen> {
             height: 50,
             child: ListView(
               scrollDirection: Axis.horizontal,
-              padding: const EdgeInsets.symmetric(horizontal: 16.0),
+              padding: const EdgeInsets.symmetric(horizontal: 16),
               children: categories.map((category) {
                 return _buildCategoryChip(category, category == _selectedCategory);
               }).toList(),
@@ -235,12 +393,12 @@ class _MenuScreenState extends State<MenuScreen> {
             child: filteredMenu.isEmpty
                 ? const Center(child: Text('Menu tidak ditemukan di kategori ini.'))
                 : GridView.builder(
-                    padding: const EdgeInsets.all(16.0),
+                    padding: const EdgeInsets.all(16),
                     gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
                       crossAxisCount: crossAxisCount,
-                      crossAxisSpacing: 16.0,
-                      mainAxisSpacing: 16.0,
-                      childAspectRatio: (1 / 1.45),
+                      crossAxisSpacing: 16,
+                      mainAxisSpacing: 16,
+                      childAspectRatio: 1 / 1.45,
                     ),
                     itemCount: filteredMenu.length,
                     itemBuilder: (context, index) {
@@ -256,7 +414,7 @@ class _MenuScreenState extends State<MenuScreen> {
 
   Widget _buildCategoryChip(String label, bool isSelected) {
     return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 4.0),
+      padding: const EdgeInsets.symmetric(horizontal: 4),
       child: ActionChip(
         label: Text(label),
         onPressed: () {
@@ -309,7 +467,7 @@ class _MenuScreenState extends State<MenuScreen> {
               ),
             ),
             Padding(
-              padding: const EdgeInsets.all(10.0),
+              padding: const EdgeInsets.all(10),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
@@ -332,7 +490,11 @@ class _MenuScreenState extends State<MenuScreen> {
                     children: [
                       Text(
                         'Rp ${item.price.toStringAsFixed(0)}',
-                        style: const TextStyle(fontWeight: FontWeight.bold, color: Colors.orange, fontSize: 16),
+                        style: const TextStyle(
+                          fontWeight: FontWeight.bold,
+                          color: Colors.orange,
+                          fontSize: 16,
+                        ),
                       ),
                       ElevatedButton(
                         onPressed: () {
