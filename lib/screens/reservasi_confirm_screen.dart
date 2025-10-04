@@ -198,8 +198,9 @@ class _ReservasiConfirmScreenState extends State<ReservasiConfirmScreen> {
                   ),
                   const Divider(height: 30),
                   ElevatedButton(
-                    onPressed: () {
-                      Navigator.of(context).popUntil((route) => route.isFirst);
+                   onPressed: () {
+                      Navigator.pop(context); 
+                      Navigator.popUntil(context, (route) => route.isFirst);
                     },
                     style: ElevatedButton.styleFrom(
                       minimumSize: const Size(double.infinity, 55),
