@@ -1,7 +1,9 @@
+// lib/screens/order_choice_screen.dart
+
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import '../models/cart.dart'; 
-import 'receipt_screen.dart'; 
+import '../models/cart.dart';
+import 'receipt_screen.dart';
 
 class OrderChoiceScreen extends StatefulWidget {
   final Map<String, dynamic> summaryData;
@@ -13,13 +15,17 @@ class OrderChoiceScreen extends StatefulWidget {
 
 class _OrderChoiceScreenState extends State<OrderChoiceScreen> {
   String _selectedOption = 'Makan di Tempat';
-  String _selectedPaymentMethod = 'Cash'; 
-  final List<String> _paymentMethods = ['Cash', 'Kartu Debit/Kredit', 'QRIS (Gopay/Dana/OVO)'];
+  String _selectedPaymentMethod = 'Cash';
+  final List<String> _paymentMethods = [
+    'Cash',
+    'Kartu Debit/Kredit',
+    'QRIS (Gopay/Dana/OVO)'
+  ];
 
   @override
   Widget build(BuildContext context) {
-    final cart = context.read<CartProvider>(); 
-    final List<CartItem> items = widget.summaryData['items'].cast<CartItem>(); 
+    final cart = context.read<CartProvider>();
+    final List<CartItem> items = widget.summaryData['items'].cast<CartItem>();
     final double subtotal = widget.summaryData['subtotal'];
     final double tax = widget.summaryData['tax'];
     final double totalFinal = widget.summaryData['totalFinal'];
@@ -31,57 +37,71 @@ class _OrderChoiceScreenState extends State<OrderChoiceScreen> {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
+            // DETAIL BIAYA / NOTA RINGKAS
             _buildOrderDetails(items, subtotal, tax, totalFinal),
             const SizedBox(height: 30),
 
+            // PILIHAN METODE PEMBAYARAN
             const Text(
               'Pilih Metode Pembayaran:',
               style: TextStyle(fontSize: 18, fontWeight: FontWeight.w600),
             ),
             const SizedBox(height: 10),
             SizedBox(
-              height: 40, 
+              height: 40,
               child: ListView(
                 scrollDirection: Axis.horizontal,
-                children: _paymentMethods.map((method) => _buildPaymentOption(method)).toList(),
+                children: _paymentMethods
+                    .map((method) => _buildPaymentOption(method))
+                    .toList(),
               ),
             ),
             const SizedBox(height: 30),
 
+            // PILIHAN PESANAN (Makan di Tempat / Bawa Pulang)
             const Text(
               'Bagaimana Anda ingin menikmati pesanan ini?',
               style: TextStyle(fontSize: 18, fontWeight: FontWeight.w600),
             ),
             const SizedBox(height: 20),
 
-            _buildOptionCard('Makan di Tempat (Dine-in)', Icons.restaurant, 'Makan di Tempat'),
+            _buildOptionCard('Makan di Tempat (Dine-in)', Icons.restaurant,
+                'Makan di Tempat'),
             const SizedBox(height: 15),
-            _buildOptionCard('Bawa Pulang (Take-away)', Icons.shopping_bag, 'Bawa Pulang'),
+            _buildOptionCard(
+                'Bawa Pulang (Take-away)', Icons.shopping_bag, 'Bawa Pulang'),
             const SizedBox(height: 30),
 
+            // TOMBOL FINALISASI
             ElevatedButton.icon(
               icon: const Icon(Icons.payment, color: Colors.white),
-              label: Text('BAYAR Rp ${totalFinal.toStringAsFixed(0)} & CETAK RESI', style: const TextStyle(color: Colors.white, fontSize: 18)),
+              label: Text(
+                  'BAYAR Rp ${totalFinal.toStringAsFixed(0)} & CETAK RESI',
+                  style: const TextStyle(color: Colors.white, fontSize: 18)),
               onPressed: () {
                 final receiptData = {
                   ...widget.summaryData,
-                  'orderOption': _selectedOption, 
-                  'paymentMethod': _selectedPaymentMethod, 
+                  'orderOption': _selectedOption,
+                  'paymentMethod': _selectedPaymentMethod,
                   'dateTime': DateTime.now(),
                 };
+
+                // Clear cart setelah pembayaran berhasil
                 cart.clearCart();
 
-                Navigator.pushReplacement( 
+                Navigator.pushReplacement(
                   context,
                   MaterialPageRoute(
-                    builder: (context) => ReceiptScreen(receiptData: receiptData),
+                    builder: (context) =>
+                        ReceiptScreen(receiptData: receiptData),
                   ),
                 );
               },
               style: ElevatedButton.styleFrom(
                 minimumSize: const Size(double.infinity, 55),
-                backgroundColor: Colors.green, 
-                shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
+                backgroundColor: Colors.green,
+                shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(10)),
               ),
             ),
           ],
@@ -90,6 +110,7 @@ class _OrderChoiceScreenState extends State<OrderChoiceScreen> {
     );
   }
 
+  // WIDGET PEMBANTU: Pilihan Metode Pembayaran
   Widget _buildPaymentOption(String method) {
     final isSelected = _selectedPaymentMethod == method;
     return GestureDetector(
@@ -101,14 +122,23 @@ class _OrderChoiceScreenState extends State<OrderChoiceScreen> {
       child: Padding(
         padding: const EdgeInsets.only(right: 12.0),
         child: Chip(
-          label: Text(method, style: TextStyle(color: isSelected ? Colors.white : Colors.black87, fontWeight: FontWeight.w600)),
-          backgroundColor: isSelected ? Colors.orange.shade700 : Colors.grey.shade200,
-          side: isSelected ? BorderSide.none : BorderSide(color: Colors.grey.shade400, width: 0.5),
+          label: Text(method,
+              style: TextStyle(
+                  color: isSelected ? Colors.white : Colors.black87,
+                  fontWeight: FontWeight.w600)),
+          backgroundColor:
+              isSelected ? Colors.orange.shade700 : Colors.grey.shade200,
+          side: isSelected
+              ? BorderSide.none
+              : BorderSide(color: Colors.grey.shade400, width: 0.5),
         ),
       ),
     );
   }
-  Widget _buildOrderDetails(List<CartItem> items, double subtotal, double tax, double totalFinal) {
+
+  // WIDGET PEMBANTU: Detail Pesanan dan Biaya
+  Widget _buildOrderDetails(
+      List<CartItem> items, double subtotal, double tax, double totalFinal) {
     return Card(
       elevation: 4,
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
@@ -117,23 +147,26 @@ class _OrderChoiceScreenState extends State<OrderChoiceScreen> {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            const Text('Ringkasan Belanja', style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold)),
+            const Text('Ringkasan Belanja',
+                style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold)),
             const Divider(height: 15),
-
             ...items.map((item) => _buildItemRow(item)).toList(),
             const Divider(height: 15),
-
             _buildSummaryRow('Subtotal', subtotal),
             _buildSummaryRow('PPN (10%)', tax, isTax: true),
             const Divider(height: 15),
-
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                const Text('TOTAL AKHIR:', style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold)),
+                const Text('TOTAL AKHIR:',
+                    style:
+                        TextStyle(fontSize: 18, fontWeight: FontWeight.bold)),
                 Text(
                   'Rp ${totalFinal.toStringAsFixed(0)}',
-                  style: const TextStyle(fontSize: 24, fontWeight: FontWeight.bold, color: Colors.orange),
+                  style: const TextStyle(
+                      fontSize: 24,
+                      fontWeight: FontWeight.bold,
+                      color: Colors.orange),
                 ),
               ],
             ),
@@ -143,19 +176,27 @@ class _OrderChoiceScreenState extends State<OrderChoiceScreen> {
     );
   }
 
+  // WIDGET PEMBANTU: Baris Ringkasan Biaya
   Widget _buildSummaryRow(String title, double amount, {bool isTax = false}) {
     return Padding(
       padding: const EdgeInsets.symmetric(vertical: 3.0),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
-          Text(title, style: TextStyle(fontSize: isTax ? 14 : 16, color: isTax ? Colors.red : Colors.black87)),
-          Text('Rp ${amount.toStringAsFixed(0)}', style: TextStyle(fontSize: isTax ? 14 : 16, fontWeight: isTax ? FontWeight.normal : FontWeight.w600)),
+          Text(title,
+              style: TextStyle(
+                  fontSize: isTax ? 14 : 16,
+                  color: isTax ? Colors.red : Colors.black87)),
+          Text('Rp ${amount.toStringAsFixed(0)}',
+              style: TextStyle(
+                  fontSize: isTax ? 14 : 16,
+                  fontWeight: isTax ? FontWeight.normal : FontWeight.w600)),
         ],
       ),
     );
   }
 
+  // WIDGET PEMBANTU: Baris Detail Item
   Widget _buildItemRow(CartItem item) {
     final itemTotal = item.price * item.quantity;
     return Padding(
@@ -176,6 +217,7 @@ class _OrderChoiceScreenState extends State<OrderChoiceScreen> {
     );
   }
 
+  // WIDGET PEMBANTU: Opsi Pilihan
   Widget _buildOptionCard(String title, IconData icon, String value) {
     final isSelected = _selectedOption == value;
     return GestureDetector(
@@ -197,12 +239,13 @@ class _OrderChoiceScreenState extends State<OrderChoiceScreen> {
           padding: const EdgeInsets.all(16.0),
           child: Row(
             children: [
-              Icon(icon, size: 40, color: isSelected ? Colors.orange : Colors.grey),
+              Icon(icon,
+                  size: 40, color: isSelected ? Colors.orange : Colors.grey),
               const SizedBox(width: 15),
               Text(
                 title,
                 style: TextStyle(
-                  fontSize: 18, 
+                  fontSize: 18,
                   fontWeight: isSelected ? FontWeight.bold : FontWeight.normal,
                   color: isSelected ? Colors.orange.shade900 : Colors.black87,
                 ),
