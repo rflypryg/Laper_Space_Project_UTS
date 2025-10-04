@@ -17,10 +17,9 @@ class _ReservasiConfirmScreenState extends State<ReservasiConfirmScreen> {
   @override
   void initState() {
     super.initState();
-    final DateTime confirmationTime =
-        widget.reservasiData['confirmationTime'] is DateTime
-            ? widget.reservasiData['confirmationTime']
-            : DateTime.now();
+    final DateTime confirmationTime = widget.reservasiData['confirmationTime'] is DateTime
+        ? widget.reservasiData['confirmationTime']
+        : DateTime.now();
     refNumber = _generateRefNumber(confirmationTime);
   }
 
@@ -28,8 +27,7 @@ class _ReservasiConfirmScreenState extends State<ReservasiConfirmScreen> {
     return 'RES${DateFormat('yyMMddHHmmss').format(dt)}';
   }
 
-  Widget _buildInfoBox(String label, String value,
-      {IconData? icon, VoidCallback? onTap}) {
+  Widget _buildInfoBox(String label, String value, {IconData? icon, VoidCallback? onTap}) {
     return GestureDetector(
       onTap: onTap,
       child: Material(
@@ -47,8 +45,7 @@ class _ReservasiConfirmScreenState extends State<ReservasiConfirmScreen> {
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  Text(label,
-                      style: const TextStyle(fontSize: 12, color: Colors.grey)),
+                  Text(label, style: const TextStyle(fontSize: 12, color: Colors.grey)),
                   if (onTap != null)
                     const Icon(Icons.copy, size: 14, color: Colors.blue),
                 ],
@@ -64,9 +61,7 @@ class _ReservasiConfirmScreenState extends State<ReservasiConfirmScreen> {
                       style: TextStyle(
                         fontSize: 14,
                         fontWeight: FontWeight.w600,
-                        color: onTap != null
-                            ? Colors.blue.shade700
-                            : Colors.black87,
+                        color: onTap != null ? Colors.blue.shade700 : Colors.black87,
                       ),
                       overflow: TextOverflow.ellipsis,
                     ),
@@ -91,10 +86,9 @@ class _ReservasiConfirmScreenState extends State<ReservasiConfirmScreen> {
 
   @override
   Widget build(BuildContext context) {
-    final DateTime selectedDateTime =
-        widget.reservasiData['selectedDateTime'] is DateTime
-            ? widget.reservasiData['selectedDateTime']
-            : DateTime.now();
+    final DateTime selectedDateTime = widget.reservasiData['selectedDateTime'] is DateTime
+        ? widget.reservasiData['selectedDateTime']
+        : DateTime.now();
 
     return Scaffold(
       appBar: AppBar(
@@ -120,8 +114,7 @@ class _ReservasiConfirmScreenState extends State<ReservasiConfirmScreen> {
                   const CircleAvatar(
                     radius: 30,
                     backgroundColor: Colors.blue,
-                    child: Icon(Icons.check_circle_outline,
-                        color: Colors.white, size: 40),
+                    child: Icon(Icons.check_circle_outline, color: Colors.white, size: 40),
                   ),
                   const SizedBox(height: 15),
                   const Text(
